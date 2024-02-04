@@ -1,6 +1,6 @@
 package com.poldroc.autoresponse.starter.annotation;
 
-import com.poldroc.autoresponse.core.AutoConfig;
+import com.poldroc.autoresponse.starter.AutoConfig;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

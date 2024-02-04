@@ -15,6 +15,6 @@ public class Init {
 
     @PostConstruct
     public void init() {
-        logger.info("======  Auto Response Starting ======");
+        logger.info("Auto Response : Successful startup!");
     }
 }

@@ -50,7 +50,9 @@ public class DefaultResponseFactoryImpl implements ResponseFactory {
 
     @Override
     public Response newInstance(ResponseStatus statusLine) {
-        return null;
+        Response bean = this.newEmptyInstance();
+        bean.setStatus(statusLine);
+        return bean;
     }
 
     @Override
@@ -69,6 +71,8 @@ public class DefaultResponseFactoryImpl implements ResponseFactory {
 
     @Override
     public Response newFailInstance() {
-        return null;
+        Response bean = this.newEmptyInstance();
+        bean.setStatus(responseStatusFactory.defaultError());
+        return bean;
     }
 }

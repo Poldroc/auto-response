@@ -1,6 +1,8 @@
-package com.poldroc.autoresponse.core;
+package com.poldroc.autoresponse.starter;
 
+import com.poldroc.autoresponse.core.AutoExceptionAliasForRegister;
 import com.poldroc.autoresponse.core.AutoResponseProperties;
+import com.poldroc.autoresponse.core.advice.GlobalExceptionAdvice;
 import com.poldroc.autoresponse.core.advice.ObjectResponseBodyAdvice;
 import com.poldroc.autoresponse.core.advice.VoidResponseBodyAdvice;
 import com.poldroc.autoresponse.factory.ResponseFactory;
@@ -44,6 +46,17 @@ public class AutoConfig {
     @ConditionalOnMissingBean(value = {ResponseStatusFactory.class})
     public ResponseStatusFactory responseStatusFactory() {
         return new DefaultResponseStatusFactoryImpl();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(value = GlobalExceptionAdvice.class)
+    public GlobalExceptionAdvice globalExceptionAdvice(){
+        return new GlobalExceptionAdvice();
+    }
+
+    @Bean
+    public AutoExceptionAliasForRegister autoExceptionAliasForRegister() {
+        return new AutoExceptionAliasForRegister();
     }
 
     @Bean

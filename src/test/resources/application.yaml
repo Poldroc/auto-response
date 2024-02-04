@@ -1,2 +1,9 @@
 auto-response:
   response-style: 0
+  print-exception-in-global-advice: true
+  print-alias-register-success-log: true
+  default-error-code: 500
+  default-error-msg: fail
+  default-success-code: 200
+  default-success-msg: success
+  use-origin-exception-detail-message: true

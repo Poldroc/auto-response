@@ -56,7 +56,7 @@ public class ObjectResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                 || method.getReturnType().equals(Void.TYPE)
                 || !MappingJackson2HttpMessageConverter.class.isAssignableFrom(converterType)) {
             if (IS_LOG_DEBUG) {
-                logger.debug("Give Me Resp: method为空、返回值为void、非JSONConverter，跳过");
+                logger.debug("Auto Response : method为空、返回值为void、非JSONConverter，跳过");
             }
             return false;
         }
@@ -64,12 +64,12 @@ public class ObjectResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         // 如果方法上标注了 ExcludeFromGiveMeResp 注解，则不对该方法的返回值进行处理
         if (method.isAnnotationPresent(ExcludeFromAutoResponse.class)) {
             if (IS_LOG_DEBUG) {
-                logger.debug("Give Me Resp: 方法上标注了 @ExcludeFromGiveMeResp 注解，跳过");
+                logger.debug("Auto Response : 方法上标注了 @ExcludeFromGiveMeResp 注解，跳过");
             }
             return false;
         }
 
-        logger.debug("Give Me Resp: 对方法 {} 的返回值进行处理", method.getName());
+        logger.debug("Auto Response : 对方法 {} 的返回值进行处理", method.getName());
         return true;
 
     }
@@ -94,7 +94,7 @@ public class ObjectResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         } else {
             if (IS_LOG_DEBUG) {
                 String path = request.getURI().getPath();
-                logger.debug("Give Me Resp: 对路径 {} 的非空返回值进行封装", path);
+                logger.debug("Auto Response : 对路径 {} 的非空返回值进行封装", path);
             }
             return responseFactory.newSuccessInstance(body);
         }

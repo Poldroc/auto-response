@@ -39,6 +39,24 @@ public class AutoResponseProperties {
      */
     private String defaultErrorMsg = DefaultConstants.DEFAULT_ERROR_MSG;
 
+    /**
+     * 是否打印异常别名注册成功的日志
+     */
+    private boolean printAliasRegisterSuccessLog = false;
+
+    /**
+     * 是否在全局异常处理器中打印异常，默认不打印
+     */
+    private boolean printExceptionInGlobalAdvice = false;
+
+    /**
+     * 不使用 @AutoExceptionMapper 和 @AutoExceptionAliasFor 修饰的原生异常
+     * 是否使用异常信息Throwable类的detailMessage进行返回
+     * originExceptionUsingDetailMessage=false，则msg=defaultErrorMsg
+     * 默认为false
+     */
+    private Boolean useOriginExceptionDetailMessage = false;
+
     public Integer getResponseStyle() {
         return responseStyle;
     }
@@ -77,6 +95,30 @@ public class AutoResponseProperties {
 
     public void setDefaultErrorMsg(String defaultErrorMsg) {
         this.defaultErrorMsg = defaultErrorMsg;
+    }
+
+    public boolean isPrintAliasRegisterSuccessLog() {
+        return printAliasRegisterSuccessLog;
+    }
+
+    public void setPrintAliasRegisterSuccessLog(boolean printAliasRegisterSuccessLog) {
+        this.printAliasRegisterSuccessLog = printAliasRegisterSuccessLog;
+    }
+
+    public boolean isPrintExceptionInGlobalAdvice() {
+        return printExceptionInGlobalAdvice;
+    }
+
+    public void setPrintExceptionInGlobalAdvice(boolean printExceptionInGlobalAdvice) {
+        this.printExceptionInGlobalAdvice = printExceptionInGlobalAdvice;
+    }
+
+    public Boolean getUseOriginExceptionDetailMessage() {
+        return useOriginExceptionDetailMessage;
+    }
+
+    public void setUseOriginExceptionDetailMessage(Boolean useOriginExceptionDetailMessage) {
+        this.useOriginExceptionDetailMessage = useOriginExceptionDetailMessage;
     }
 
 
